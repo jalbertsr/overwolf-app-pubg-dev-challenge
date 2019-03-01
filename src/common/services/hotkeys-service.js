@@ -14,23 +14,15 @@ function _getHotkey(hotkeyId, callback) {
 	});
 }
 
-function _setHotkey(hotkeyId, action) {
-	overwolf.settings.registerHotKey(hotkeyId, function (result) {
-		if (result.status === 'success') {
-			action();
-		} else {
-			console.error(`[HOTKEYS SERVICE] failed to register hotkey ${hotkeyId}`);
-		}
-	});
-}
-
-function getTakeScreenshotHotkey() {
-	return new Promise((resolve, reject) => {
-		_getHotkey(HOTKEYS.TAKE_SCREENSHOT, function (result) {
-			resolve(result);
-		});
-	});
-}
+// function _setHotkey(hotkeyId, action) {
+// 	overwolf.settings.registerHotKey(hotkeyId, function (result) {
+// 		if (result.status === 'success') {
+// 			action();
+// 		} else {
+// 			console.error(`[HOTKEYS SERVICE] failed to register hotkey ${hotkeyId}`);
+// 		}
+// 	});
+// }
 
 function getToggleHotkey() {
 	return new Promise((resolve, reject) => {
@@ -40,17 +32,16 @@ function getToggleHotkey() {
 	});
 }
 
-function setTakeScreenshotHotkey(action) {
-	_setHotkey(HOTKEYS.TAKE_SCREENSHOT, action);
-}
+// Example on set a hotkey
+// function setTakeScreenshotHotkey(action) {
+// 	_setHotkey(HOTKEYS.TAKE_SCREENSHOT, action);
+// }
 
 function addHotkeyChangeListener(listener) {
 	overwolf.settings.OnHotKeyChanged.addListener(listener);
 }
 
 export default {
-	getTakeScreenshotHotkey,
 	getToggleHotkey,
-	setTakeScreenshotHotkey,
 	addHotkeyChangeListener
 };

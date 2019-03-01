@@ -1,6 +1,5 @@
 const HotkeyIds = {
-  TOGGLE: 'pubg_devchallenge_showhide',
-  TAKE_SCREENSHOT: 'pubg_devchallenge_screenshot'
+  TOGGLE: 'pubg_postAnalysis_showhide',
 }
 
 export default HotkeyIds;

@@ -14,15 +14,12 @@ class Settings extends Component {
 
 		this.state = {
 			toggleText: '',
-			screenshotText: '',
 		};
 	}
 
 	async _updateHotkeys() {
 		let toggleHotkey = await HotkeysService.getToggleHotkey();
-		let screenshotHotkey = await HotkeysService.getTakeScreenshotHotkey();
 		this.updateToggle(toggleHotkey);
-		this.updateScreenshot(screenshotHotkey);
 	}
 
 	async componentDidMount() {
@@ -50,11 +47,6 @@ class Settings extends Component {
 		});
 	}
 	
-	updateScreenshot(value) {
-		this.setState({
-			screenshotText: value
-		});
-	}
 
   render() {
     return (
@@ -80,7 +72,6 @@ class Settings extends Component {
 
 				<main>
 					<div><span>Toggle:&nbsp;</span><kbd id="toggle">{this.state.toggleText}</kbd></div>
-					<div><span>Take a screentshot:&nbsp;</span><kbd id="screenshot">{this.state.screenshotText}</kbd></div>
 				</main>
 
       </div>

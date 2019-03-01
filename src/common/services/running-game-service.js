@@ -10,7 +10,7 @@ function _init() {
 function _onGameInfoUpdated(event) {
 	let gameRunning;
 
-	console.log(event, null, 2)
+	console.log('_onGameInfoUpdate', event)
 	if (event &&
 		(event.runningChanged || event.gameChanged)) {
 		gameRunning = (event.gameInfo && event.gameInfo.isRunning);

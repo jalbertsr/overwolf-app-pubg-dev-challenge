@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 /*global overwolf*/
 
 import React, { Component } from 'react';
@@ -18,7 +19,7 @@ class App extends Component {
 		overwolf.windows.getCurrentWindow(result => {
 			this.setState({
 				currentWindowName: result.window.name
-			}, () => console.log(this.state));
+			}, () => console.log('app state', this.state));
 		});
 	}
 

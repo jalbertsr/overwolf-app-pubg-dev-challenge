@@ -3,13 +3,14 @@
   "type": "WebApp",
   "meta": {
     "name": "PUBG Dev Challenge Sample",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "minimum-overwolf-version": "0.120.0",
     "author": "Joan Albert Segura Rueda",
     "icon": "IconMouseOver.png",
     "icon_gray": "IconMouseNormal.png",
     "launcher_icon": "desktop-icon.ico",
-    "description": "Sample app for PUBG dev challenge in React"
+    "description": "Sample app for PUBG dev challenge in React",
+    "dock_button_title": "PUBG Post-analysis"
   },
   "permissions": [
     "Hotkeys"
@@ -33,11 +34,6 @@
         "title": "Show In-Game Window",
         "action-type": "toggle",
         "default": "Ctrl+F"
-      },
-      "pubg_devchallenge_screenshot": {
-        "title": "Take Screenshot",
-        "action-type": "custom",
-        "default": "Ctrl+R"
       }
     },
     "game_events": [10906],

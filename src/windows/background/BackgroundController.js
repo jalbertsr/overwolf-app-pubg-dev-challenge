@@ -3,9 +3,7 @@
 import WindowNames from '../../common/constants/window-names';
 import RunningGameService from '../../common/services/running-game-service';
 import WindowsService from '../../common/services/windows-service';
-import HotkeysService from '../../common/services/hotkeys-service';
 import GEPService from '../../common/services/gep-service';
-import ScreenshotService from '../../common/services/screenshots-service';
 import EventBus from '../../common/services/event-bus';
 
 class BackgroundController {
@@ -13,7 +11,6 @@ class BackgroundController {
 		window.ow_eventBus = EventBus;
 
 		BackgroundController._registerAppLaunchTriggerHandler();
-		BackgroundController._registerHotkeys();
 		
 		let startupWindow = WindowsService.getStartupWindowName();
 		WindowsService.restore(startupWindow);
@@ -48,14 +45,15 @@ class BackgroundController {
 	}
 
 	static _registerHotkeys() {
-		HotkeysService.setTakeScreenshotHotkey(async () => {
-			try {
-				let screenshotUrl = await ScreenshotService.takeScreenshot();
-				window.ow_eventBus.trigger('screenshot', screenshotUrl);
-			} catch (e) {
-				console.error(e);
-			}
-		});
+		// How to trigger an event
+		// HotkeysService.setTakeScreenshotHotkey(async () => {
+		// 	try {
+		// 		let screenshotUrl = await ScreenshotService.takeScreenshot();
+		// 		window.ow_eventBus.trigger('screenshot', screenshotUrl);
+		// 	} catch (e) {
+		// 		console.error(e);
+		// 	}
+		// });
 	}
 }
 
