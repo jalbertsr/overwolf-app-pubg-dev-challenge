@@ -19,7 +19,7 @@ class App extends Component {
 		overwolf.windows.getCurrentWindow(result => {
 			this.setState({
 				currentWindowName: result.window.name
-			}, () => console.log('app state', this.state));
+			}, () => console.log('app window state', this.state));
 		});
 	}
 
