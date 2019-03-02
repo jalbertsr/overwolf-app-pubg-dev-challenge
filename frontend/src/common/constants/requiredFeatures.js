@@ -1,19 +1,6 @@
-export const REQUIRED_FEATURES = [
-	// Events
-	'death',
-	'knockedout',
-	'damage_dealt',
-	'headshot',
-	'kill',
-	'killer',
-	'matchEnd',
-	'matchStart',
-	'revived',
-	// Info Updates
-	'headshots',
+const EVENTS = ['death', 'killer', 'damage_dealt', 'matchStart', 'matchEnd', 'matchSummary', 'revived', 'kill', 'headshot', 'knockedout'];
+const UPDATES = [
 	'kills',
-	'max_kill_distance',
-	'total_damage_dealt',
 	'location',
 	'map',
 	'mode',
@@ -22,7 +9,16 @@ export const REQUIRED_FEATURES = [
 	'me',
 	'total_teams',
 	'roster',
-	'nicknames'
+	'team',
+	'rank'
+];
+
+
+export const REQUIRED_FEATURES = [
+	// Events
+	...EVENTS,
+	// Info Updates
+	...UPDATES
 ];
 
 export const REQUIRED_FEATURES_DICT = {
@@ -33,9 +29,11 @@ export const REQUIRED_FEATURES_DICT = {
 	HEADSHOT: 'headshot',
 	KILL: 'kill',
 	KILLER: 'killer',
-	MATCH_END: 'matchEnd',
-	MATCH_START: 'matchStart',
+	MATCH: 'match',
 	REVIVED: 'revived',
+	MATCH_START: 'matchEnd',
+	MATCH_END: 'matchStart',
+	MATCH_SUMMARY: 'matchSummary',
 	// Info Updates
 	HEADSHOTS: 'headshots',
 	KILLS: 'kills',
@@ -49,5 +47,6 @@ export const REQUIRED_FEATURES_DICT = {
 	ME: 'me',
 	TOTAL_TEAMS: 'total_teams',
 	ROSTER: 'roster',
-	NICNAMES: 'nicknames'
+	NICKNAMES: 'nicknames',
+	RANK: 'rank'
 };
