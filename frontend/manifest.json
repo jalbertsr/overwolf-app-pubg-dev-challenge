@@ -37,22 +37,33 @@
       }
     },
     "game_events": [10906],
-    "start_window": "background",
+    "start_window": "main",
     "windows": {
-      "background": {
+      "main": {
         "file": "build/index.html",
-        "native_window": true,
+        "show_in_windows": true,
+        "resizable": true,
+        "show_minimize": true,
+        "show_maximize": false,
         "desktop_only": true,
-        "background_optimization": false,
-        "is_background_page": true,
+        "grab_focus_on_desktop": true,
+        "use_os_windowing": true,
+        "topmost": false,
+        "background_optimization": true,
+        "native_window": true,
         "transparent": true,
-        "resizable": false,
-        "show_in_taskbar": false,
-        "size": {
-          "width": 100,
-          "height": 100
+        "start_position": {
+          "top": 150,
+          "left": 320
         },
-        "grab_keyboard_focus": false
+        "size": {
+          "width": 1280,
+          "height": 775
+        },
+        "min_size": {
+          "width": 1280,
+          "height": 775
+        }
       },
       "settings": {
         "file": "build/index.html",

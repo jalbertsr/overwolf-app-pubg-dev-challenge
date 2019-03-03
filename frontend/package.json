@@ -4,12 +4,12 @@
 	"private": true,
 	"dependencies": {
 		"react": "^16.6.0",
-		"react-dom": "^16.6.0"
+		"react-dom": "^16.6.0",
+		"react-router-dom": "^4.3.1"
 	},
 	"scripts": {
 		"start": "node scripts/start.js",
-		"reload": "nodemon --watch src -e .jsx,.css --ignore build/ --exec npm run build",
-		"watch": "concurrently npm:start npm:reload",
+		"reload": "nodemon --watch src -e .jsx,.js,.css --ignore build/ --exec npm run build",
 		"build": "set PUBLIC_URL=./&& node scripts/build.js",
 		"test": "node scripts/test.js"
 	},
@@ -74,10 +74,9 @@
 		"babel-preset-react-app": "^5.0.4",
 		"bfj": "6.1.1",
 		"case-sensitive-paths-webpack-plugin": "2.1.2",
-		"css-loader": "1.0.0",
-		"concurrently": "^4.1.0",
-		"cross-env": "^5.2.0",
 		"chalk": "2.4.1",
+		"cross-env": "^5.2.0",
+		"css-loader": "1.0.0",
 		"dotenv": "6.0.0",
 		"dotenv-expand": "4.2.0",
 		"eslint": "5.6.0",

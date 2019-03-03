@@ -7,7 +7,7 @@ function _getUrlParameterByName(paramName) {
 }
 
 function getLaunchSource() {
-	return _getUrlParameterByName('source');;
+	return _getUrlParameterByName('source');
 }
 
 export default {
