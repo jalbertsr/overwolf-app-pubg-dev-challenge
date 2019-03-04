@@ -27,7 +27,7 @@ jobs:
           paths:
             - node_modules
 
-      - run: npm run lint
+      - run: cd frontend && npm run lint
 
 workflows:
   version: 2
