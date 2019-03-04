@@ -34,7 +34,8 @@
         "printWidth": 80,
         "singleQuote": true,
         "tabWidth": 2,
-        "trailingComma": "all"
+        "trailingComma": "all",
+        "endOfLine": "auto"
       }
     ],
     "jsx-a11y/anchor-is-valid": [
