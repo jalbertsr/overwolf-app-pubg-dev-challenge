@@ -33,8 +33,5 @@ workflows:
   version: 2
   test-eslint:
     jobs:
-      - test-lint:
-         filters:
-           branches:
-             ignore: master
+      - test-lint
 
