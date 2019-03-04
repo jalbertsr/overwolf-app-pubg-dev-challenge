@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
 
-      - run: cd frontend
+      - run: cd ../frontend
 
       # Download and cache dependencies
       - restore_cache:
