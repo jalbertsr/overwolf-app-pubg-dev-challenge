@@ -2,9 +2,11 @@
 
 import React, { Component } from 'react';
 import { MemoryRouter } from 'react-router-dom';
+
 import Background from './windows/background/Background';
 import InGame from './windows/in-game/InGame';
 import Main from './windows/main/Main';
+import DefaultHeader from './common/components/DefaultHeader/DefaultHeader';
 
 class App extends Component {
 	state = {
@@ -22,21 +24,25 @@ class App extends Component {
 
   render() {
 		const windowName = this.state.currentWindowName;
-		let window;
+		let window, isSettings;
 		let body = document.getElementsByTagName('body')[0]
 		switch (windowName) {
 			case 'main':
 				window = <Main />
+				isSettings = false; 
 				break;
 			case 'background':
 				window = <Background />
+				isSettings = false; 
 				break;
 			case 'settings':
 				window = <div> settings </div>
 				body.className = 'settings'
+				isSettings = true; 
 				break;
 			case 'ingame':
 				window = <InGame />
+				isSettings = false; 
 				body.className = 'in-game'
 				break;
 			default:
@@ -45,6 +51,7 @@ class App extends Component {
 
     return (
       <div className="App">
+				<DefaultHeader windowName={windowName} isSettings={isSettings} />
 				<MemoryRouter>
 					{window}
 				</MemoryRouter>

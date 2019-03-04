@@ -1,6 +1,6 @@
 /*global overwolf*/
 
-import WindowNames from '../../common/constants/window-names';
+import WindowNames from '../../common/constants/windowNames';
 import RunningGameService from '../../common/services/running-game-service';
 import WindowsService from '../../common/services/windows-service';
 import GEPService from '../../common/services/gep-service';

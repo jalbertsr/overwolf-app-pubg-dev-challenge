@@ -1,6 +1,6 @@
 /*global overwolf*/
 
-import WindowNames from '../constants/window-names';
+import WindowNames from '../constants/windowNames';
 import LaunchSourceService from '../services/launch-source-service';
 import RunningGameService from '../services/running-game-service';
 
@@ -80,6 +80,23 @@ function minimize(name) {
 	});
 }
 
+function close(name) {
+	return new Promise(async (resolve, reject) => {
+		try {
+			await _obtainWindow(name);
+			overwolf.windows.close(name, (result) => {
+				if (result.status === 'success') {
+					resolve();
+				} else {
+					reject(result);
+				}
+			});
+		} catch (e) {
+			reject(e)
+		}
+	});
+}
+
 async function getStartupWindowName() {
 	let launchSource = LaunchSourceService.getLaunchSource();
 
@@ -98,6 +115,7 @@ async function getStartupWindowName() {
 }
 
 export default {
+	close,
 	restore,
 	dragMove,
 	minimize,

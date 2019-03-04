@@ -2,7 +2,6 @@ import React, { Component } from 'React';
 import { Route, Switch } from 'react-router-dom';
 
 import Navbar from '../../common/components/Navbar/Navbar'
-// import BackgroundController from '../background/BackgroundController';
 
 export default class Main extends Component {
     constructor(props){
@@ -10,7 +9,6 @@ export default class Main extends Component {
         this.state = {
             nickname: 'jaxalbert' 
         }
-        // BackgroundController.run();
     }
 
     render () {

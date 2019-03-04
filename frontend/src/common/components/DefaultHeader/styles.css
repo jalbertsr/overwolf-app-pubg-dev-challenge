@@ -1,0 +1,48 @@
+button {
+    padding: 0;
+    border: none;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  .icon {
+    position: relative;
+    width: var(--size, 30px);
+    height: var(--size, 30px);
+    transition: .15s;
+  }
+  .icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .app-header {
+    display: flex;
+    height: 30px;
+    background-color: #131313;
+  }
+  
+  .window-controls-group {
+    margin-left: auto;
+    display: flex;
+    --color: #a8a8a8;
+    --color-hover: #dedede;
+    --bg-color-hover: #272727;
+  }
+  
+  .window-control {
+    color: var(--color);
+    background-color: transparent;
+  }
+  
+  .window-control:hover, .window-control:active {
+    color: var(--color-hover);
+    background-color: var(--bg-color-hover);
+  }
+  
+  .window-control-close {
+    --color-hover: #dedede;
+    --bg-color-hover: #c21913;
+  }
