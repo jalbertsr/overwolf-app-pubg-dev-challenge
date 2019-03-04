@@ -4,16 +4,15 @@
 
 version: 2
 defaults: &defaults
-  working_directory: ~/overwolf-app-pubg-dev-challenge
+  working_directory: ~/overwolf-app-pubg-dev-challenge/frontend
   docker:
     - image: circleci/node:10.13.0
 jobs:
   test-lint:
     <<: *defaults
     steps:
-      - checkout
-
-      - run: cd ../frontend
+      - checkout:
+          path: ~/overwolf-app-pubg-dev-challenge
 
       # Download and cache dependencies
       - restore_cache:
