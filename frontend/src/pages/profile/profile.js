@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
-import { withUser } from '../../context/user';
+import { withNickname } from '../../context/nickname';
+import { withSearch } from '../../context/search';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
-      nickname: props.nickname || '',
-      searchedNickname: props.match.params.nickname || '',
+      // data: {},
     };
   }
 
-  decideHierarchy = () => {
-    console.log(this.state);
-    const { searchedNickname, nickname } = this.state;
-    return searchedNickname.length ? searchedNickname : nickname;
-  };
+  async componentDidMount() {
+    const { accountId } = this.props;
+    try {
+      const data = await axios
+        .get(
+          `https://2z9znr6j0a.execute-api.eu-west-1.amazonaws.com/PUBG_API/players/${accountId}/seasons/lifetime`,
+          {
+            headers: {
+              Accept: 'application/json',
+            },
+          },
+        )
+        .then(({ data }) => data.data);
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   render() {
-    return <div>{this.decideHierarchy()}</div>;
+    return <div>{this.props.accountId}</div>;
   }
 }
 
-export default withRouter(withUser(Profile));
+export default withRouter(withNickname(withSearch(Profile)));

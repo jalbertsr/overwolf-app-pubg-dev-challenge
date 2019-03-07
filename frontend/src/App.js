@@ -7,13 +7,15 @@ import Background from './windows/background/Background';
 import InGame from './windows/in-game/InGame';
 import Main from './windows/main/main';
 import DefaultHeader from './common/components/DefaultHeader/DefaultHeader';
-import { UserContext } from './context/user';
+import { NicknameContext } from './context/nickname';
+import { SearchContextProvider } from './context/search';
 import UserService from './common/services/userInfoService';
 
 class App extends Component {
   state = {
     currentWindowName: '',
     userNickname: UserService.getPUBGNickname(),
+    accountId: UserService.getAccountId(),
   };
 
   componentDidMount() {
@@ -25,7 +27,12 @@ class App extends Component {
   }
 
   render() {
-    const { currentWindowName: windowName, userNickname } = this.state;
+    const {
+      currentWindowName: windowName,
+      userNickname,
+      accountId,
+    } = this.state;
+
     let window, isSettings;
     const body = document.getElementsByTagName('body')[0];
     switch (windowName) {
@@ -55,9 +62,11 @@ class App extends Component {
       <div className="App">
         <DefaultHeader windowName={windowName} isSettings={isSettings} />
         <MemoryRouter>
-          <UserContext.Provider value={{ nickname: userNickname }}>
-            {window}
-          </UserContext.Provider>
+          <NicknameContext.Provider
+            value={{ nickname: userNickname, accountId: accountId }}
+          >
+            <SearchContextProvider>{window}</SearchContextProvider>
+          </NicknameContext.Provider>
         </MemoryRouter>
       </div>
     );

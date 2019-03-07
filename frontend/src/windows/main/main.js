@@ -14,12 +14,7 @@ export default function Main() {
         <Route
           exact
           path="/matchAnalysis/:matchId"
-          component={props => (
-            <div>
-              lastMatch/
-              {console.log(props)}
-            </div>
-          )}
+          component={() => <div>lastMatch/</div>}
         />
         <Route component={() => <div>Not found route 404</div>} />
       </Switch>

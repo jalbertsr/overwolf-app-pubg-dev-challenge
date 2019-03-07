@@ -15,4 +15,7 @@ export default {
   setPUBGNickname: nickname =>
     localStorageService.setItem('nickname', nickname),
   getPUBGNickname: () => localStorageService.getItem('nickname'),
+  setAccountId: accountId =>
+    localStorageService.setItem('accountId', accountId),
+  getAccountId: () => localStorageService.getItem('accountId'),
 };
