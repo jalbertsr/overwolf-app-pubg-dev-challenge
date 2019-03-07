@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Navbar from '../../common/components/Navbar/Navbar';
+import Profile from '../../pages/profile/profile';
 
 export default function Main() {
   return (
@@ -9,16 +10,7 @@ export default function Main() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={() => <div>home/</div>} />
-        <Route
-          exact
-          path="/profile/:nickname"
-          component={props => (
-            <div>
-              profile/
-              {console.log(props)}
-            </div>
-          )}
-        />
+        <Route exact path="/profile/:nickname" component={Profile} />
         <Route
           exact
           path="/matchAnalysis/:matchId"

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+import { withUser } from '../../../context/user';
 import PUBG_Icon from '../../../statics/PUBG_Icon.png';
 import './styles.css';
 
@@ -8,7 +9,7 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: 'jaxalbert',
+      nickname: props.nickname,
       matchId: '1231456',
       searchedNickname: '',
     };
@@ -27,7 +28,6 @@ class Navbar extends Component {
 
   render() {
     const { nickname, matchId, searchedNickname } = this.state;
-    console.log(this.state, this.props);
     return (
       <nav className="navbar">
         <div className="container-fluid">
@@ -84,4 +84,4 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(Navbar);
+export default withRouter(withUser(Navbar));
