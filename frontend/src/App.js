@@ -7,26 +7,32 @@ import Background from './windows/background/Background';
 import InGame from './windows/in-game/InGame';
 import Main from './windows/main/main';
 import DefaultHeader from './common/components/DefaultHeader/DefaultHeader';
+import { NicknameContext } from './context/nickname';
+import { SearchContextProvider } from './context/search';
+import UserService from './common/services/userInfoService';
 
 class App extends Component {
   state = {
     currentWindowName: '',
+    userNickname: UserService.getPUBGNickname(),
+    accountId: UserService.getAccountId(),
   };
 
   componentDidMount() {
     overwolf.windows.getCurrentWindow(result => {
-      console.log(result);
-      this.setState(
-        {
-          currentWindowName: result.window.name,
-        },
-        () => console.log('app window state', this.state),
-      );
+      this.setState({
+        currentWindowName: result.window.name,
+      });
     });
   }
 
   render() {
-    const { currentWindowName: windowName } = this.state;
+    const {
+      currentWindowName: windowName,
+      userNickname,
+      accountId,
+    } = this.state;
+
     let window, isSettings;
     const body = document.getElementsByTagName('body')[0];
     switch (windowName) {
@@ -49,13 +55,19 @@ class App extends Component {
         body.className = 'in-game';
         break;
       default:
-        console.log(`Unexistent window type ${windowName}`);
+        console.error(`Unexistent window type ${windowName}`);
     }
 
     return (
       <div className="App">
         <DefaultHeader windowName={windowName} isSettings={isSettings} />
-        <MemoryRouter>{window}</MemoryRouter>
+        <MemoryRouter>
+          <NicknameContext.Provider
+            value={{ nickname: userNickname, accountId: accountId }}
+          >
+            <SearchContextProvider>{window}</SearchContextProvider>
+          </NicknameContext.Provider>
+        </MemoryRouter>
       </div>
     );
   }
