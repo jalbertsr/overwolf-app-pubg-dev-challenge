@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import { withNickname } from '../../../context/nickname';
-import { withSearch } from '../../../context/search';
 import PUBG_Icon from '../../../statics/PUBG_Icon.png';
 import './styles.css';
 
@@ -21,7 +20,6 @@ class Navbar extends Component {
 
   handleClick = () => {
     const { searchedNickname } = this.state;
-    this.props.setSearchNickname(searchedNickname);
     if (searchedNickname.length) {
       this.setState({ searchedNickname: '' }, () =>
         this.props.history.push(`/profile/${searchedNickname}`),
@@ -88,4 +86,4 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(withNickname(withSearch(Navbar)));
+export default withRouter(withNickname(Navbar));

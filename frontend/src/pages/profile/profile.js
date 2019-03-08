@@ -1,40 +1,42 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 import { withNickname } from '../../context/nickname';
-import { withSearch } from '../../context/search';
+import { getAccountId, getLifeStats } from '../../common/services/apiService';
 
 class Profile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // data: {},
-    };
-  }
+  state = {
+    data: {},
+  };
 
   async componentDidMount() {
-    const { accountId } = this.props;
-    try {
-      const data = await axios
-        .get(
-          `https://2z9znr6j0a.execute-api.eu-west-1.amazonaws.com/PUBG_API/players/${accountId}/seasons/lifetime`,
-          {
-            headers: {
-              Accept: 'application/json',
-            },
-          },
-        )
-        .then(({ data }) => data.data);
-      console.log(data);
-    } catch (e) {
-      console.error(e);
+    if (this.isMainAccount()) {
+      const { accountId } = this.props;
+      try {
+        const data = await getLifeStats(accountId);
+        this.setState({ data: data.attributes });
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      try {
+        const { nickname } = this.props.match.params;
+        const accountId = await getAccountId(nickname);
+        const data = await getLifeStats(accountId);
+        this.setState({ data: data.attributes });
+      } catch (e) {
+        console.error(e);
+      }
     }
   }
 
+  isMainAccount = () =>
+    this.props.match.params.nickname === this.props.nickname;
+
   render() {
-    return <div>{this.props.accountId}</div>;
+    const { data } = this.state;
+    return <div>{JSON.stringify(data)}</div>;
   }
 }
 
-export default withRouter(withNickname(withSearch(Profile)));
+export default withRouter(withNickname(Profile));

@@ -10,7 +10,11 @@ export default function Main() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={() => <div>home/</div>} />
-        <Route exact path="/profile/:nickname" component={Profile} />
+        <Route
+          exact
+          path="/profile/:nickname"
+          component={props => <Profile {...props} />}
+        />
         <Route
           exact
           path="/matchAnalysis/:matchId"

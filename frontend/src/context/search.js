@@ -1,3 +1,5 @@
+// @deprecated context
+
 import * as React from 'react';
 
 const initialState = {
