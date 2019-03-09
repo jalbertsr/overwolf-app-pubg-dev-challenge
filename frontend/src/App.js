@@ -8,7 +8,6 @@ import InGame from './windows/in-game/InGame';
 import Main from './windows/main/main';
 import DefaultHeader from './common/components/DefaultHeader/DefaultHeader';
 import { NicknameContext } from './context/nickname';
-import { SearchContextProvider } from './context/search';
 import UserService from './common/services/userInfoService';
 
 class App extends Component {
@@ -40,10 +39,6 @@ class App extends Component {
         window = <Main />;
         isSettings = false;
         break;
-      case 'background':
-        window = <Background />;
-        isSettings = false;
-        break;
       case 'settings':
         window = <div> settings </div>;
         body.className = 'settings';
@@ -65,7 +60,8 @@ class App extends Component {
           <NicknameContext.Provider
             value={{ nickname: userNickname, accountId: accountId }}
           >
-            <SearchContextProvider>{window}</SearchContextProvider>
+            {window}
+            <Background />
           </NicknameContext.Provider>
         </MemoryRouter>
       </div>

@@ -12,10 +12,10 @@ class BackgroundController {
 
     BackgroundController._registerAppLaunchTriggerHandler();
 
-    const startupWindow = WindowsService.getStartupWindowName();
+    const startupWindow = await WindowsService.getStartupWindowName();
     WindowsService.restore(startupWindow);
 
-    const isGameRunning = RunningGameService.isGameRunning();
+    const isGameRunning = await RunningGameService.isGameRunning();
     if (isGameRunning) {
       GEPService.registerToGEP();
       await WindowsService.restore(WindowNames.IN_GAME);

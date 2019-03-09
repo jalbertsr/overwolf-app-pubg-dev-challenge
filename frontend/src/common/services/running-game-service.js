@@ -19,8 +19,7 @@ function _onGameInfoUpdated(event) {
 }
 
 async function isGameRunning() {
-  const gameRunning = await _isGameRunning();
-  return gameRunning;
+  return await _isGameRunning();
 }
 
 function _isGameRunning() {

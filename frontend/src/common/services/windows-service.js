@@ -104,14 +104,12 @@ async function getStartupWindowName() {
     return WindowNames.IN_GAME;
   }
 
-  // if toggle hotkey -> 'settings'
-
   const isGameRunning = await RunningGameService.isGameRunning();
   if (isGameRunning) {
     return WindowNames.IN_GAME;
   }
 
-  return WindowNames.SETTINGS;
+  return WindowNames.MAIN;
 }
 
 export default {
