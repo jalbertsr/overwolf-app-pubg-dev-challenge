@@ -27,9 +27,14 @@ const getLifeStats = async accountId =>
 
 const sendInGameData = async info =>
   await axios
-    .post(BASE_PATH_LISTENER, { info })
-    .then(({ data }) =>
-      data === 'success' ? console.log('success') : console.log('fail'),
-    );
+    .post(
+      BASE_PATH_LISTENER,
+      { ...info },
+      { headers: { 'Content-Type': 'application/json' } },
+    )
+    .then(({ data }) => {
+      console.log('Server response', data);
+    })
+    .catch(e => console.log(e));
 
 export { getLifeStats, getAccountId, sendInGameData };

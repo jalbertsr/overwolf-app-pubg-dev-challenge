@@ -1,10 +1,13 @@
 /*global overwolf*/
 
 import { REQUIRED_FEATURES } from '../constants/requiredFeatures';
-import { LogService as log } from './log-service';
+import dataFormatterService from './dataFormatter';
 import { sendInGameData } from './apiService';
 
 const REGISTER_RETRY_TIMEOUT = 10000;
+
+const requestBodyIsReady = payload =>
+  payload !== null && payload !== undefined && !!Object.keys(payload).length;
 
 function registerToGEP() {
   console.log('registeredToGEP');
@@ -24,26 +27,26 @@ function registerToGEP() {
 async function _handleGameEvent(eventsInfo) {
   const promisesArray = [];
   for (const eventData of eventsInfo.events) {
-    log('EVENTS', eventData.name, eventData.data);
-    const payload = {
-      name: eventData.name,
-      data: eventData.data,
-    };
-
-    promisesArray.push(sendInGameData(payload));
+    const payload = dataFormatterService(
+      'EVENTS',
+      eventData.name,
+      eventData.data,
+    );
+    if (requestBodyIsReady(payload)) {
+      promisesArray.push(sendInGameData(payload));
+    }
   }
 
   Promise.all(promisesArray);
 }
 
 async function _handleInfoUpdate(eventsInfo) {
-  log('UPDATES', eventsInfo.feature, eventsInfo.info);
-  const payload = {
-    feature: eventsInfo.feature,
-    data: eventsInfo.info,
-  };
-
-  sendInGameData(payload);
+  const payload = dataFormatterService(
+    'UPDATES',
+    eventsInfo.feature,
+    eventsInfo.info,
+  );
+  if (requestBodyIsReady(payload)) sendInGameData(payload);
 }
 
 export default {

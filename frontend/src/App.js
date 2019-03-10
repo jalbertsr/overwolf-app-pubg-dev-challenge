@@ -3,19 +3,23 @@
 import React, { Component } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
-import Background from './windows/background/Background';
 import InGame from './windows/in-game/InGame';
 import Main from './windows/main/main';
 import DefaultHeader from './common/components/DefaultHeader/DefaultHeader';
 import { NicknameContext } from './context/nickname';
 import UserService from './common/services/userInfoService';
+import BackgroundController from './BackgroundController';
 
 class App extends Component {
-  state = {
-    currentWindowName: '',
-    userNickname: UserService.getPUBGNickname(),
-    accountId: UserService.getAccountId(),
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentWindowName: '',
+      userNickname: UserService.getPUBGNickname(),
+      accountId: UserService.getAccountId(),
+    };
+    BackgroundController.run();
+  }
 
   componentDidMount() {
     overwolf.windows.getCurrentWindow(result => {
@@ -61,7 +65,6 @@ class App extends Component {
             value={{ nickname: userNickname, accountId: accountId }}
           >
             {window}
-            <Background />
           </NicknameContext.Provider>
         </MemoryRouter>
       </div>

@@ -1,10 +1,10 @@
 /*global overwolf*/
 
-import WindowNames from '../../common/constants/windowNames';
-import RunningGameService from '../../common/services/running-game-service';
-import WindowsService from '../../common/services/windows-service';
-import GEPService from '../../common/services/gep-service';
-import EventBus from '../../common/services/event-bus';
+import WindowNames from './common/constants/windowNames';
+import RunningGameService from './common/services/running-game-service';
+import WindowsService from './common/services/windows-service';
+import GEPService from './common/services/gep-service';
+import EventBus from './common/services/event-bus';
 
 class BackgroundController {
   static async run() {

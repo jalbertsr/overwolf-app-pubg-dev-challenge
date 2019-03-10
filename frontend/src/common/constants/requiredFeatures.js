@@ -1,14 +1,15 @@
 const EVENTS = [
-  'death',
+  // 'death',
   'killer',
-  'damage_dealt',
-  'matchStart',
-  'matchEnd',
-  'matchSummary',
+  // 'damage_dealt',
+  // 'matchStart',
+  // 'matchEnd',
+  // 'matchSummary',
   'revived',
   'kill',
-  'headshot',
+  // 'headshot',
   'knockedout',
+  'match',
 ];
 const UPDATES = [
   'kills',
@@ -19,8 +20,8 @@ const UPDATES = [
   'phase',
   'me',
   'total_teams',
-  'roster',
-  'team',
+  // 'roster',
+  // 'team',
   'rank',
 ];
 
@@ -41,8 +42,8 @@ export const REQUIRED_FEATURES_DICT = {
   KILLER: 'killer',
   MATCH: 'match',
   REVIVED: 'revived',
-  MATCH_START: 'matchEnd',
-  MATCH_END: 'matchStart',
+  MATCH_START: 'matchStart',
+  MATCH_END: 'matchEnd',
   MATCH_SUMMARY: 'matchSummary',
   // Info Updates
   HEADSHOTS: 'headshots',
