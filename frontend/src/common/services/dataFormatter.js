@@ -2,14 +2,14 @@ import { REQUIRED_FEATURES_DICT } from '../constants/requiredFeatures';
 import MAP_NAMES from '../constants/mapNames';
 import UserService from './userInfoService';
 
-export default function dataFormatterService(type, feature, data) {
-  const defaultPayload = {
-    accountId: UserService.getAccountId(),
-    readOnly: false,
-    createPlayer: false,
-    isLocation: false,
-  };
+export const defaultPayload = {
+  accountId: UserService.getAccountId(),
+  readOnly: false,
+  createPlayer: false,
+  isLocation: false,
+};
 
+export function dataFormatterService(type, feature, data) {
   if (type === 'UPDATES') {
     switch (feature) {
       case REQUIRED_FEATURES_DICT.ROSTER:

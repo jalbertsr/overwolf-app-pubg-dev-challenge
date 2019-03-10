@@ -1,13 +1,16 @@
 /*global overwolf*/
 
 import { REQUIRED_FEATURES } from '../constants/requiredFeatures';
-import dataFormatterService from './dataFormatter';
+import { dataFormatterService } from './dataFormatter';
 import { sendInGameData } from './apiService';
 
 const REGISTER_RETRY_TIMEOUT = 10000;
 
 const requestBodyIsReady = payload =>
-  payload !== null && payload !== undefined && !!Object.keys(payload).length;
+  payload !== null &&
+  payload !== undefined &&
+  !!Object.keys(payload).length &&
+  !!Object.keys(payload.data).length;
 
 function registerToGEP() {
   console.log('registeredToGEP');
@@ -46,7 +49,9 @@ async function _handleInfoUpdate(eventsInfo) {
     eventsInfo.feature,
     eventsInfo.info,
   );
-  if (requestBodyIsReady(payload)) sendInGameData(payload);
+  if (requestBodyIsReady(payload)) {
+    sendInGameData(payload);
+  }
 }
 
 export default {
