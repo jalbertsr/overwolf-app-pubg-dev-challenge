@@ -30,10 +30,15 @@
       }
     ],
     "hotkeys": {
-      "pubg_devchallenge_showhide": {
+      "pubg_postAnalysis_showhide": {
         "title": "Show In-Game Window",
         "action-type": "toggle",
         "default": "Ctrl+F"
+      },
+      "pubg_postAnalysis_screenshot": {
+        "title": "Take Screenshot",
+        "action-type": "custom",
+        "default": "Ctrl+C"
       }
     },
     "game_events": [10906],
@@ -41,10 +46,12 @@
     "windows": {
       "main": {
         "file": "build/index.html",
+        "override_on_update": true,
         "show_in_windows": true,
-        "resizable": true,
+        "resizable": false,
         "show_minimize": true,
         "show_maximize": false,
+        "show_in_taskbar": true,
         "desktop_only": true,
         "grab_focus_on_desktop": true,
         "use_os_windowing": true,
@@ -65,17 +72,22 @@
           "height": 775
         }
       },
-      "settings": {
+      "settingss": {
         "file": "build/index.html",
+        "override_on_update": true,
         "transparent": true,
-        "resizable": true,
+        "resizable": false,
+        "start_position": {
+          "top": 300,
+          "left": 520
+        },
         "size": {
           "width": 500,
-          "height": 300
+          "height": 580
         },
         "min_size": {
           "width": 500,
-          "height": 300
+          "height": 580
         }
       },
       "ingame": {

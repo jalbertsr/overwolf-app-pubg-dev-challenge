@@ -18,7 +18,7 @@ export default function Main() {
         <Route
           exact
           path="/matchAnalysis/:matchId"
-          component={() => <div>lastMatch/</div>}
+          component={() => <div>match repetiton</div>}
         />
         <Route component={() => <div>Not found route 404</div>} />
       </Switch>

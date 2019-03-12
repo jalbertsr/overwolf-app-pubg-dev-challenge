@@ -8,12 +8,13 @@ img {
 .navbar {
 	border: 0;
 	border-radius: 0;
-	background: linear-gradient(to right, #1d1d1d, rgb(31, 29, 29));
+  background: linear-gradient(to right, #1d1d1d, rgb(31, 29, 29));
+  margin-bottom: 0px;
 }
 
 .navbar-header {
 	display: flex !important;
-    align-items: baseline !important;
+  align-items: baseline !important;
 }
 
 .navbar .navbar-brand {
@@ -47,7 +48,7 @@ img {
 }
 
 .navbar .navbar-toggle {
-	padding-right: 0;	
+	padding-right: 0;
 }
 
 .navbar .navbar-toggle .icon-bar {

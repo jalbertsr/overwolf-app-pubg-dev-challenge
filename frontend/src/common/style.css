@@ -1,10 +1,9 @@
 body {
-  background-color: #f6f6f6;
+  background-color: #ead8ab;
   color: #131313;
   margin: 0px;
-  display: flex;
-  flex-direction: column;
   font-size: 14px;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
+  border: 1px solid black;
 }

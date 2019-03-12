@@ -1,0 +1,58 @@
+kbd {
+  margin: 0px 0.1em;
+  padding: 0.1em 0.6em;
+  border-radius: 3px;
+  border: 1px solid rgb(204, 204, 204);
+  color: rgb(51, 51, 51);
+  line-height: 1.4;
+  display: inline-block;
+  box-shadow: 0px 1px 0px rgba(0,0,0,0.2), inset 0px 0px 0px 2px #ffffff;
+  background-color: rgb(247, 247, 247);
+  text-shadow: 0 1px 0 #fff;
+  font-family: inherit;
+}
+
+h1 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 12px;
+  margin: 10px 0px 15px 0px;
+}
+
+div.wrapper {
+  text-align: center;
+}
+
+div.key {
+  margin: 10px 0px 10px 0px;
+}
+
+img.screenshot-settings {
+  height: 245px;
+  width: 325px;
+}
+
+button.nickname {
+  margin: 0px 0.1em;
+  padding: 0.1em 0.6em;
+  border-radius: 3px;
+  color: #fff;
+  line-height: 1.4;
+  display: inline-block;
+  background-color: rgb(51, 51, 51);
+  font-family: inherit;
+}
+
+input.nickname-settings {
+  margin-right: 5px !important;
+  text-align: center;
+  width: 25%;
+  display: inline-block !important;
+}
+
+span.nickname-settings {
+  margin-right: 3px;
+}

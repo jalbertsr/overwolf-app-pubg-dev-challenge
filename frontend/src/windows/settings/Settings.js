@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 
 import HotkeysService from '../../common/services/hotkeys-service';
 import DragService from '../../common/services/drag-service';
-import '../../common/style.css';
+import UserInfoService from '../../common/services/userInfoService';
+import HotKeysImage from '../../statics/HotkeysScreenshot.png';
+import './styles.css';
 
 class Settings extends Component {
   constructor(props) {
@@ -15,6 +17,8 @@ class Settings extends Component {
 
     this.state = {
       toggleText: '',
+      screenshotText: '',
+      nickname: UserInfoService.getPUBGNickname(),
     };
   }
 
@@ -35,69 +39,79 @@ class Settings extends Component {
       );
     });
   }
-  async _updateHotkeys() {
+
+  _updateHotkeys = async () => {
     const toggleHotkey = await HotkeysService.getToggleHotkey();
+    const screenshotHotkey = await HotkeysService.getTakeScreenshotHotkey();
     this.updateToggle(toggleHotkey);
-  }
+    this.updateScreenshot(screenshotHotkey);
+  };
 
-  onCloseClicked() {
-    window.close();
-  }
-
-  updateToggle(value) {
+  updateToggle = value => {
     this.setState({
       toggleText: value,
     });
-  }
+  };
+
+  updateScreenshot = value => {
+    this.setState({
+      screenshotText: value,
+    });
+  };
+
+  handleChange = e => {
+    this.setState({
+      nickname: e.target.value,
+    });
+  };
+
+  updateNickname = () => {
+    const { nickname } = this.state;
+    UserInfoService.setPUBGNickname(nickname);
+  };
 
   render() {
-    const { toggleText } = this.state;
+    const { toggleText, screenshotText, nickname } = this.state;
     return (
       <div className="settings">
-        <svg xmlns="http://www.w3.org/2000/svg" display="none">
-          <symbol id="window-control_close" viewBox="0 0 30 30">
-            <line
-              x1="19.5"
-              y1="10.5"
-              x2="10.5"
-              y2="19.5"
-              fill="none"
-              stroke="currentcolor"
-              strokeLinecap="round"
-            />
-            <line
-              x1="10.5"
-              y1="10.5"
-              x2="19.5"
-              y2="19.5"
-              fill="none"
-              stroke="currentcolor"
-              strokeLinecap="round"
-            />
-          </symbol>
-        </svg>
-
-        <header className="app-header" ref={this._headerRef}>
-          <div className="window-controls-group">
-            <button
-              className="icon window-control window-control-close"
-              id="closeButton"
-              type="button"
-              onClick={this.onCloseClicked}
-            >
-              <svg>
-                <use xlinkHref="#window-control_close" />
-              </svg>
-            </button>
+        <div className="wrapper">
+          <h1>Account Settings:</h1>
+          <p>Give us your nickname so we can give you your best stats.</p>
+          <div className="key">
+            <span className="nickname-settings">PUBG Nickname:&nbsp;</span>
+            <div className="form-group">
+              <input
+                className="nickname-settings form-control"
+                value={nickname}
+                onChange={this.handleChange}
+              />
+              <button
+                className="nickname"
+                type="button"
+                onClick={this.updateNickname}
+              >
+                Save
+              </button>
+            </div>
           </div>
-        </header>
-
-        <main>
-          <div>
-            <span>Toggle:&nbsp;</span>
+        </div>
+        <div className="wrapper">
+          <h1>Hotkeys:</h1>
+          <div className="key">
+            <span>Toggle In Game Window:&nbsp;</span>
             <kbd id="toggle">{toggleText}</kbd>
           </div>
-        </main>
+          <div className="key">
+            <span>Take a screentshot:&nbsp;</span>
+            <kbd id="screenshot">{screenshotText}</kbd>
+          </div>
+          <p>To customize your hotkeys go to the overwolf settings.</p>
+          <img
+            className="screenshot-settings"
+            src={HotKeysImage}
+            alt="Hotkeys config"
+          />
+        </div>
       </div>
     );
   }

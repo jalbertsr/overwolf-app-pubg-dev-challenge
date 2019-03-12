@@ -5,6 +5,8 @@ import RunningGameService from './common/services/running-game-service';
 import WindowsService from './common/services/windows-service';
 import GEPService from './common/services/gep-service';
 import EventBus from './common/services/event-bus';
+import HotkeysService from './common/services/hotkeys-service';
+import ScreenshotService from './common/services/screenshotService';
 
 class BackgroundController {
   static async run() {
@@ -27,7 +29,6 @@ class BackgroundController {
         WindowsService.restore(WindowNames.IN_GAME);
       } else {
         // WindowsService.minimize(WindowNames.IN_GAME);
-        console.log('closing app after game closed');
         window.close();
       }
     });
@@ -47,15 +48,14 @@ class BackgroundController {
   }
 
   static _registerHotkeys() {
-    // How to trigger an event
-    // HotkeysService.setTakeScreenshotHotkey(async () => {
-    // 	try {
-    // 		let screenshotUrl = await ScreenshotService.takeScreenshot();
-    // 		window.ow_eventBus.trigger('screenshot', screenshotUrl);
-    // 	} catch (e) {
-    // 		console.error(e);
-    // 	}
-    // });
+    HotkeysService.setTakeScreenshotHotkey(async () => {
+      try {
+        const screenshotUrl = await ScreenshotService.takeScreenshot();
+        window.ow_eventBus.trigger('screenshot', screenshotUrl);
+      } catch (e) {
+        console.error(e);
+      }
+    });
   }
 }
 

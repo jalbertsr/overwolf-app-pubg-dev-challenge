@@ -3,8 +3,11 @@
 import React, { Component } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
+import './common/style.css';
+import WindowNames from './common/constants/windowNames';
 import InGame from './windows/in-game/InGame';
 import Main from './windows/main/main';
+import Settings from './windows/settings/Settings';
 import DefaultHeader from './common/components/DefaultHeader/DefaultHeader';
 import { NicknameContext } from './context/nickname';
 import UserService from './common/services/userInfoService';
@@ -18,7 +21,7 @@ class App extends Component {
       userNickname: UserService.getPUBGNickname(),
       accountId: UserService.getAccountId(),
     };
-    BackgroundController.run();
+    BackgroundController.run(); // move to a place when it will run only once.
   }
 
   componentDidMount() {
@@ -39,16 +42,16 @@ class App extends Component {
     let window, isSettings;
     const body = document.getElementsByTagName('body')[0];
     switch (windowName) {
-      case 'main':
+      case WindowNames.MAIN:
         window = <Main />;
         isSettings = false;
         break;
-      case 'settings':
-        window = <div> settings </div>;
+      case WindowNames.SETTINGS:
+        window = <Settings />;
         body.className = 'settings';
         isSettings = true;
         break;
-      case 'ingame':
+      case WindowNames.IN_GAME:
         window = <InGame />;
         isSettings = false;
         body.className = 'in-game';
@@ -58,7 +61,7 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <React.Fragment>
         <DefaultHeader windowName={windowName} isSettings={isSettings} />
         <MemoryRouter>
           <NicknameContext.Provider
@@ -67,7 +70,7 @@ class App extends Component {
             {window}
           </NicknameContext.Provider>
         </MemoryRouter>
-      </div>
+      </React.Fragment>
     );
   }
 }
