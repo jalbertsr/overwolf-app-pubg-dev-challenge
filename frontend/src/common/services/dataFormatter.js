@@ -1,6 +1,8 @@
 import { REQUIRED_FEATURES_DICT } from '../constants/requiredFeatures';
 import MAP_NAMES from '../constants/mapNames';
 import UserService from './userInfoService';
+import WindowsService from './windows-service';
+import WindowNames from '../constants/windowNames';
 
 export const defaultPayload = {
   accountId: UserService.getAccountId(),
@@ -118,6 +120,7 @@ export function dataFormatterService(type, feature, data) {
     switch (feature) {
       case REQUIRED_FEATURES_DICT.DEATH:
         console.log('Event DEATH happened', data);
+        WindowsService.restore(WindowNames.IN_GAME);
         break;
       case REQUIRED_FEATURES_DICT.KILLER:
         let killerName = '';

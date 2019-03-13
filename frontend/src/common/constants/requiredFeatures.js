@@ -1,16 +1,4 @@
-const EVENTS = [
-  // 'death',
-  'killer',
-  // 'damage_dealt',
-  // 'matchStart',
-  // 'matchEnd',
-  // 'matchSummary',
-  'revived',
-  'kill',
-  // 'headshot',
-  'knockedout',
-  'match',
-];
+const EVENTS = ['death', 'killer', 'revived', 'kill', 'knockedout', 'match'];
 const UPDATES = [
   'kills',
   'location',
@@ -20,8 +8,8 @@ const UPDATES = [
   'phase',
   'me',
   'total_teams',
-  // 'roster',
-  // 'team',
+  'roster',
+  'team',
   'rank',
 ];
 

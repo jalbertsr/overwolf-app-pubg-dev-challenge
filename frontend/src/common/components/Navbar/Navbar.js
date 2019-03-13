@@ -9,7 +9,7 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      matchId: '1231456',
+      matchId: '864e8837-6c15-4c74-9cc9-f5cf00f1c5fc', // testing propouses (pot cauducar)
       searchedNickname: '',
     };
   }
@@ -55,10 +55,7 @@ class Navbar extends Component {
               </Link>
             </div>
             <div className="navbar-brand">
-              <Link
-                to={`/matchAnalysis/${matchId}`}
-                style={{ textDecoration: 'none' }}
-              >
+              <Link to={`/match/${matchId}`} style={{ textDecoration: 'none' }}>
                 <span className="fa fa-gears" />
                 <span className="link">Match Analysis</span>
               </Link>

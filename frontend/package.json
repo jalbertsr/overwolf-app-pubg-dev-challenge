@@ -7,7 +7,7 @@
 		"reload": "nodemon --watch src -e .jsx,.js,.css --ignore build/ --exec npm run build",
 		"build": "set PUBLIC_URL=./&& node scripts/build.js",
 		"test": "node scripts/test.js",
-		"lint": "eslint ."
+		"lint": "eslint ./src"
 	},
 	"dependencies": {
 		"axios": "^0.18.0",

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import { withNickname } from '../../context/nickname';
 import { getAccountId, getLifeStats } from '../../common/services/apiService';
@@ -35,7 +35,14 @@ class Profile extends Component {
 
   render() {
     const { data } = this.state;
-    return <div>{JSON.stringify(data)}</div>;
+    return (
+      <div>
+        {JSON.stringify(data)}
+        <Link to="/match/864e8837-6c15-4c74-9cc9-f5cf00f1c5fc">
+          864e8837-6c15-4c74-9cc9-f5cf00f1c5fc
+        </Link>
+      </div>
+    );
   }
 }
 

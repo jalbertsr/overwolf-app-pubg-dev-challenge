@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Navbar from '../../common/components/Navbar/Navbar';
 import Profile from '../../pages/profile/profile';
+import Match from '../../pages/match/match';
 
 export default function Main() {
   return (
@@ -17,8 +18,8 @@ export default function Main() {
         />
         <Route
           exact
-          path="/matchAnalysis/:matchId"
-          component={() => <div>match repetiton</div>}
+          path="/match/:matchId"
+          component={props => <Match {...props} />}
         />
         <Route component={() => <div>Not found route 404</div>} />
       </Switch>

@@ -77,9 +77,11 @@
         "override_on_update": true,
         "transparent": true,
         "resizable": false,
+        "clickthrough": true,
+        "grab_focus_on_desktop": true,
         "start_position": {
-          "top": 300,
-          "left": 520
+          "top": 400,
+          "left": 580
         },
         "size": {
           "width": 500,
@@ -92,15 +94,20 @@
       },
       "ingame": {
         "file": "build/index.html",
+        "in_game_only": true,
         "transparent": true,
         "resizable": true,
+        "start_position": {
+          "top": 0,
+          "left": 0
+        },
         "size": {
-          "width": 620,
-          "height": 600
+          "width": 500,
+          "height": 95
         },
         "min_size": {
-          "width": 620,
-          "height": 600
+          "width": 500,
+          "height": 95
         }
       }
     },
@@ -110,7 +117,10 @@
         "https://*.overwolf.com",
         "https://*.google-analytics.com",
         "http://*.google-analytics.com",
-        "https://www.googleapis.com"
+        "https://www.googleapis.com",
+        "https://api.pubg.com/*",
+        "https://2z9znr6j0a.execute-api.eu-west-1.amazonaws.com/*",
+        "https://8uodths1pe.execute-api.eu-west-1.amazonaws.com/*"
       ]
     }
   }
