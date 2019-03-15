@@ -15,7 +15,10 @@ export function dataFormatterService(type, feature, data) {
   if (type === 'UPDATES') {
     switch (feature) {
       case REQUIRED_FEATURES_DICT.ROSTER:
-        console.log('roster', data);
+        console.log(data);
+        const values = Object.values(data.match_info);
+        const { player: playerName } = JSON.parse(values);
+        console.log(playerName);
         break;
       case REQUIRED_FEATURES_DICT.LOCATION:
         const { location } = data.game_info;
