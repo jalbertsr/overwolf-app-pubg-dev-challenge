@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { defaultPayload } from './dataFormatter';
+
 const BASE_PATH_PUBG_PROXY =
   'https://2z9znr6j0a.execute-api.eu-west-1.amazonaws.com/PUBG_API';
 const BASE_PATH_PUBG = 'https://api.pubg.com';
@@ -49,10 +51,21 @@ const sendInGameData = async info =>
     })
     .catch(e => console.log(e));
 
+const getInGameData = async () =>
+  await axios
+    .post(
+      BASE_PATH_LISTENER,
+      { ...defaultPayload, readOnly: true, data: {} },
+      { headers: { 'Content-Type': 'application/json' } },
+    )
+    .then(({ data }) => data)
+    .catch(e => console.log(e));
+
 export {
   getLifeStats,
   getAccountId,
   getMatchStats,
   getTelemetryData,
+  getInGameData,
   sendInGameData,
 };
