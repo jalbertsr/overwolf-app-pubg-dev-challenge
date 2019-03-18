@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import './styles.css';
 import { withNickname } from '../../context/nickname';
 import {
   getMatchStats,
@@ -12,6 +13,7 @@ class Match extends Component {
   state = {
     data: {},
     hasTelemetry: false,
+    loading: true,
   };
 
   async componentDidMount() {
@@ -29,7 +31,7 @@ class Match extends Component {
       }
     } else {
       const ingameData = await getInGameData();
-      console.log(ingameData);
+      this.setState({ data: ingameData.data, loading: false });
     }
   }
 
@@ -40,8 +42,35 @@ class Match extends Component {
     );
 
   render() {
-    const { data } = this.state;
-    return <div>{JSON.stringify(data)}</div>;
+    if (this.state.loading) return <div>loading...</div>;
+    const {
+      kills,
+      maxKillDistance,
+      myRank,
+      totalDamage,
+      totalTeams,
+      headshots,
+    } = this.state.data.Item;
+    return (
+      <React.Fragment>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="last-stats-box">
+              <h2>Your last game stats</h2>
+              <ul>
+                <li>{`Rank: ${myRank} out of ${totalTeams}`}</li>
+                <li>{`Total damage: ${totalDamage}`}</li>
+                <li>{`Kills: ${kills}`}</li>
+                <li>{`Headshots: ${headshots}`}</li>
+                <li>{`Max kill distance: ${maxKillDistance}`}</li>
+                <li>Total distance travelled: </li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-md-8">.col-xs-6 .col-md-4</div>
+        </div>
+      </React.Fragment>
+    );
   }
 }
 

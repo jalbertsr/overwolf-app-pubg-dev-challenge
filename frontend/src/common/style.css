@@ -3,7 +3,9 @@ body {
   color: #131313;
   margin: 0px;
   font-size: 14px;
-  min-height: 100vh;
   font-family: 'Roboto', sans-serif;
   border: 1px solid black;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
