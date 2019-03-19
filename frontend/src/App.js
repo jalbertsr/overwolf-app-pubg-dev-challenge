@@ -45,6 +45,7 @@ class App extends Component {
       case WindowNames.MAIN:
         window = <Main />;
         isSettings = false;
+        body.className = 'main';
         break;
       case WindowNames.SETTINGS:
         window = <Settings />;

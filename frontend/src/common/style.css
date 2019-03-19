@@ -1,4 +1,16 @@
-body {
+body.main {
+  background: radial-gradient(at top left,#e5d0ad,#d2af73);
+  color: #131313;
+  margin: 0px;
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  border: 1px solid black;
+  width: 1280px;
+  height: 775px;
+  overflow: hidden;
+}
+
+body.settings {
   background-color: #ead8ab;
   color: #131313;
   margin: 0px;
