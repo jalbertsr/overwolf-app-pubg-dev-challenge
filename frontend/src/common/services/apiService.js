@@ -31,6 +31,11 @@ const getLifeStats = async accountId =>
     )
     .then(({ data }) => data.data);
 
+const getLastMatches = async accountId =>
+  await axios
+    .get(`${BASE_PATH_PUBG_PROXY}/players/${accountId}`, headers)
+    .then(({ data }) => data.data);
+
 const getMatchStats = async matchId =>
   await axios
     .get(`${BASE_PATH_PUBG}/shards/steam/matches/${matchId}`, headers)
@@ -64,6 +69,7 @@ const getInGameData = async () =>
 export {
   getLifeStats,
   getAccountId,
+  getLastMatches,
   getMatchStats,
   getTelemetryData,
   getInGameData,

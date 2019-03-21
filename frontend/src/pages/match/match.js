@@ -12,6 +12,7 @@ import {
 } from '../../common/services/apiService';
 import YourStats from './yourStats';
 import VsKillerStats from './vsKillerStats';
+import YourHistoricStats from './yourHistoricStats';
 
 class Match extends Component {
   state = {
@@ -54,20 +55,29 @@ class Match extends Component {
 
   render() {
     if (this.state.loading) return <div>loading...</div>;
-    const { killer } = this.state.inGameData.Item;
+    const { killer, mapName } = this.state.inGameData.Item;
     const { nickname } = this.props;
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-md-4 stats-box">
-            <YourStats inGameData={this.state.inGameData.Item} />
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-4 stats-box first-box">
+              <YourStats inGameData={this.state.inGameData.Item} />
+            </div>
+            <div className="col-md-7 stats-box second-box special">
+              <VsKillerStats
+                killer={killer}
+                nickname={nickname}
+                lifeTimeStats={this.state.lifeTimeStats}
+              />
+            </div>
           </div>
-          <div className="col-md-7 stats-box">
-            <VsKillerStats
-              killer={killer}
-              nickname={nickname}
-              lifeTimeStats={this.state.lifeTimeStats}
-            />
+          <div className="row">
+            <div className="col-md-4 stats-box first-box">MAP</div>
+            <div className="col-md-5 stats-box second-box">
+              <YourHistoricStats map={mapName} />
+            </div>
+            <div className="col-md-3 ads">ADS</div>
           </div>
         </div>
       </React.Fragment>

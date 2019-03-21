@@ -1,5 +1,23 @@
 .stats-box {
   height: 300px;
   border: 2.5px solid black;
-  margin: 25px 10px 0px 32px;
+}
+
+div.special {
+  width: 62.75% !important;
+}
+
+.first-box {
+  margin: 25px 0 0 20px;
+}
+
+.second-box {
+  margin: 25px 0 0 10px;
+}
+
+.ads {
+  height: 300px;
+  width: 20%;
+  margin: 25px 0 0 15px;
+  border: 2.5px solid #000;
 }
