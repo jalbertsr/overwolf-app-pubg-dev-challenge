@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './styles.css';
+import UserStatsList from './userStatsList';
 
 export default class YourStats extends Component {
   constructor(props) {
@@ -55,36 +56,48 @@ export default class YourStats extends Component {
 
   render() {
     const { nickname, killer } = this.props;
+    const { dataToShow } = this.state;
     return (
       <React.Fragment>
-        <h2>Life stats</h2>
-        <h3>{`${nickname} vs ${killer}`}</h3>
-        <select value={this.state.mode} onChange={this.handleChangeMode}>
-          <option value="solo">Solo</option>
-          <option value="duo">Duo</option>
-          <option value="squad">Squad</option>
-        </select>
-        <ul>
-          <li>
-            TPP
-            <input
-              type="radio"
-              value="tpp"
-              checked={this.state.view === 'tpp'}
-              onChange={this.handleChangeView}
-            />
-          </li>
-          <li>
-            FPP
-            <input
-              type="radio"
-              value="fpp"
-              checked={this.state.view === 'fpp'}
-              onChange={this.handleChangeView}
-            />
-          </li>
-        </ul>
-        <div>{JSON.stringify(this.state.dataToShow)}</div>
+        <div className="row">
+          <div className="col-md-8">
+            <h2 style={{ marginBottom: '5px' }}>Life stats</h2>
+            <h3 className="nicknames">{`${nickname} vs ${killer}`}</h3>
+          </div>
+          <div className="col-md-4 selector">
+            <select value={this.state.mode} onChange={this.handleChangeMode}>
+              <option value="solo">Solo</option>
+              <option value="duo">Duo</option>
+              <option value="squad">Squad</option>
+            </select>
+            <ul>
+              <li>
+                TPP
+                <input
+                  type="radio"
+                  value="tpp"
+                  checked={this.state.view === 'tpp'}
+                  onChange={this.handleChangeView}
+                />
+              </li>
+              <li>
+                FPP
+                <input
+                  type="radio"
+                  value="fpp"
+                  checked={this.state.view === 'fpp'}
+                  onChange={this.handleChangeView}
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+        {dataToShow.user && dataToShow.killer && (
+          <div>
+            <UserStatsList data={dataToShow.user} />
+            <UserStatsList data={dataToShow.killer} />
+          </div>
+        )}
       </React.Fragment>
     );
   }

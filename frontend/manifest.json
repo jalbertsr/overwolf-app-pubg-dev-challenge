@@ -111,6 +111,11 @@
         }
       }
     },
+    "developer": {
+      "enable_auto_refresh": true,
+      "reload_delay": 1000,
+      "filter": "./build/*"
+    },
     "externally_connectable": {
       "matches": [
         "http://*.overwolf.com",

@@ -11,7 +11,7 @@ import {
   getAccountId,
 } from '../../common/services/apiService';
 import YourStats from './yourStats';
-import VsKillerStats from './vsKillerStats';
+import VsKillerStats from './vsKillerStats/vsKillerStats';
 import YourHistoricStats from './yourHistoricStats';
 
 class Match extends Component {

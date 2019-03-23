@@ -94,7 +94,7 @@ class YourHistoricStats extends Component {
     const avarageStats = Object.keys(aggregatedData).reduce((acc, stat) => {
       stat === 'deathType'
         ? (acc.deathType = aggregatedData.deathType) // this is not avarage xd
-        : (acc[stat] = aggregatedData[stat] / numberOfMatches);
+        : (acc[stat] = (aggregatedData[stat] / numberOfMatches).toFixed(2));
       return acc;
     }, {});
 
@@ -104,13 +104,39 @@ class YourHistoricStats extends Component {
   render() {
     const { map } = this.props;
     const { avarageStats, loading } = this.state;
+    const {
+      boosts,
+      damageDealt,
+      headshotKills,
+      kills,
+      timeSurvived,
+      winPlace,
+      killPlace,
+      rideDistance,
+      swimDistance,
+      walkDistance,
+    } = avarageStats;
+    const totalDistance = parseFloat(
+      rideDistance + swimDistance + walkDistance,
+    ).toFixed(2);
     return (
       <React.Fragment>
         <h2>{`Your avarage performance in ${map}`}</h2>
         {loading ? (
           <p>loading...</p>
         ) : (
-          <div>{JSON.stringify(avarageStats)}</div>
+          <ul>
+            <li>{`Final rank: ${winPlace}`}</li>
+            <li>{`Rank by most kills: ${killPlace}`}</li>
+            <li>{`Kills: ${kills}`}</li>
+            <li>{`Headshots: ${headshotKills}`}</li>
+            <li>{`Damage dealt: ${damageDealt}`}</li>
+            <li>{`Boosts: ${boosts}`}</li>
+            <li>
+              {`Time survived: ${(timeSurvived / 60).toFixed(2)} minutes`}
+            </li>
+            <li>{`Total distance traveled: ${totalDistance} meters`}</li>
+          </ul>
         )}
       </React.Fragment>
     );
