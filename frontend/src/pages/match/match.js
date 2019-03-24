@@ -74,7 +74,10 @@ class Match extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-4 stats-box first-box">MAP</div>
+            <div className="col-md-4 stats-box first-box">
+              <h2>MAP</h2>
+              <p>Landing location & route movement you did in the match</p>
+            </div>
             <div className="col-md-5 stats-box second-box">
               <YourHistoricStats map={mapName} />
             </div>

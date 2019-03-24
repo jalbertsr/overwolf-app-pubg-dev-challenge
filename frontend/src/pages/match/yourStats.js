@@ -9,24 +9,11 @@ export default function YourStats({
     totalDamageDealt = 0,
     kills = 0,
     headshots = 0,
-    maxKillDistance = 'no kills :(',
+    maxKillDistance = 0,
     matchEnd,
     matchStart,
-    locationHistory,
   },
 }) {
-  const totalDistance = locations => {
-    let x = 0,
-      y = 0,
-      z = 0;
-    for (let i = 0; i < locations.length - 1; i++) {
-      x += Math.abs(locations[i]['x'] - locations[i + 1]['x']);
-      y += Math.abs(locations[i]['y'] - locations[i + 1]['y']);
-      const tempZ = Math.abs(locations[i]['z'] - locations[i + 1]['z']);
-      if (tempZ < 4000) z += tempZ;
-    }
-    return x + y + z;
-  };
   const timeSurvived = (
     (Number(matchEnd) - Number(matchStart)) /
     (1000 * 60)
@@ -45,9 +32,7 @@ export default function YourStats({
           )} meters`}
         </li>
         <li>{`Time survived: ${timeSurvived} minutes`}</li>
-        <li>
-          {`Total distance travelled: ${totalDistance(locationHistory)} meters`}
-        </li>
+        <li>Total distance travelled: TODO meters</li>
       </ul>
     </React.Fragment>
   );

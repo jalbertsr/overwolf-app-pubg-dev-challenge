@@ -29,7 +29,12 @@ export function dataFormatterService(type, feature, data) {
             ...defaultPayload,
             isLocation: true,
             data: {
-              locationHistory: { x, y, z },
+              locationHistory: {
+                x,
+                y,
+                z,
+                timeStamp: Math.round(new Date() / 1000),
+              },
             },
           };
         }

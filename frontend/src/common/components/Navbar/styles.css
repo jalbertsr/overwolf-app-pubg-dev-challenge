@@ -44,7 +44,7 @@ img {
 }
 
 .navbar span {
-	color: #ffc400;
+  color: #ffc400;
 }
 
 .navbar .navbar-toggle {
@@ -90,4 +90,8 @@ img {
 
 .navbar form .form-control:hover {
 	background: white;
+}
+
+button.btn {
+  outline: none !important;
 }

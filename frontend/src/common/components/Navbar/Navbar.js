@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import { withNickname } from '../../../context/nickname';
+import { withSidebarState } from '../../../context/sidebar';
 import PUBG_Icon from '../../../statics/PUBG_Icon.png';
 import './styles.css';
 
@@ -25,6 +26,11 @@ class Navbar extends Component {
         this.props.history.push(`/profile/${searchedNickname}`),
       );
     }
+  };
+
+  toggleFriends = () => {
+    const { isSidebarActive } = this.props;
+    this.props.setSidbarState(!isSidebarActive);
   };
 
   render() {
@@ -75,6 +81,13 @@ class Navbar extends Component {
               <button className="btn" type="button" onClick={this.handleClick}>
                 <span className="fa fa-search" />
               </button>
+              <button
+                className="btn"
+                type="button"
+                onClick={this.toggleFriends}
+              >
+                <span className="fa fa-users" />
+              </button>
             </div>
           </div>
         </div>
@@ -83,4 +96,4 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(withNickname(Navbar));
+export default withRouter(withNickname(withSidebarState(Navbar)));
