@@ -152,10 +152,16 @@ export function dataFormatterService(type, feature, data) {
         break;
       case REQUIRED_FEATURES_DICT.MATCH_START:
         console.log('Match Started!', data, feature);
-        break;
+        return {
+          ...defaultPayload,
+          data: { matchStart: Date.now().toString() },
+        };
       case REQUIRED_FEATURES_DICT.MATCH_END:
         console.log('Match Ended!', data, feature);
-        break;
+        return {
+          ...defaultPayload,
+          data: { matchEnd: Date.now().toString() },
+        };
       case REQUIRED_FEATURES_DICT.MATCH_SUMMARY:
         console.log('You are in the match Summary!', data, feature);
         break;

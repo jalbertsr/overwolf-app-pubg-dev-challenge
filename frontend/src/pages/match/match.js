@@ -57,6 +57,7 @@ class Match extends Component {
     if (this.state.loading) return <div>loading...</div>;
     const { killer, mapName } = this.state.inGameData.Item;
     const { nickname } = this.props;
+
     return (
       <React.Fragment>
         <div className="container-fluid">
