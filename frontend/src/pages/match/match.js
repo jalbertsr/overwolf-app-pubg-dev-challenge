@@ -45,7 +45,7 @@ class Match extends Component {
     }
   };
 
-  inGameData = async () => await getInGameData();
+  inGameData = async () => await getInGameData(this.props.accountId);
 
   getTelemetryLink = (included, telemetryId) =>
     included.reduce(

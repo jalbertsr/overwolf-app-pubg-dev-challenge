@@ -7,6 +7,8 @@ const BASE_PATH_PUBG_PROXY =
 const BASE_PATH_PUBG = 'https://api.pubg.com';
 const BASE_PATH_LISTENER =
   'https://8uodths1pe.execute-api.eu-west-1.amazonaws.com/Overwolf-alpha/listener';
+const BASE_PATH_FRIENDLIST =
+  'https://8mqcdo2gvh.execute-api.eu-west-1.amazonaws.com/FriendList';
 
 const headers = {
   headers: {
@@ -56,15 +58,20 @@ const sendInGameData = async info =>
     })
     .catch(e => console.log(e));
 
-const getInGameData = async () =>
+const getInGameData = async accountId =>
   await axios
     .post(
       BASE_PATH_LISTENER,
-      { ...defaultPayload, readOnly: true, data: {} },
+      { ...defaultPayload, readOnly: true, accountId, data: {} },
       { headers: { 'Content-Type': 'application/json' } },
     )
     .then(({ data }) => data)
     .catch(e => console.log(e));
+
+const getFriendList = async accountId =>
+  await axios
+    .get(`${BASE_PATH_FRIENDLIST}/friendlist/${accountId}`)
+    .then(({ data }) => data.data);
 
 export {
   getLifeStats,
@@ -73,5 +80,6 @@ export {
   getMatchStats,
   getTelemetryData,
   getInGameData,
+  getFriendList,
   sendInGameData,
 };
