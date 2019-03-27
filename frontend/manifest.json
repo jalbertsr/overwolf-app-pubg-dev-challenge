@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "type": "WebApp",
   "meta": {
-    "name": "PUBG Post Analytica",
+    "name": "PUBG PostMortem",
     "version": "0.0.1",
     "minimum-overwolf-version": "0.120.0",
     "author": "Joan Albert Segura Rueda",
@@ -72,7 +72,7 @@
           "height": 775
         }
       },
-      "settingss": {
+      "settings": {
         "file": "build/index.html",
         "override_on_update": true,
         "transparent": true,

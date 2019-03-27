@@ -1,5 +1,5 @@
 export default {
-  SETTINGS: 'settingss',
+  SETTINGS: 'settings',
   IN_GAME: 'ingame',
   MAIN: 'main',
 };
