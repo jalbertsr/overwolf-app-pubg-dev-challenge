@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Navbar from '../../common/components/Navbar/Navbar';
 import Profile from '../../pages/profile/profile';
 import Match from '../../pages/match/match';
-import SidebarDrawer from './sidebarDrawer';
+import SidebarDrawer from './sidebar/sidebarDrawer';
 import { SidebarContextProvider } from '../../context/sidebar';
 
 export default function Main() {
