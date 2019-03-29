@@ -12,6 +12,7 @@ import DefaultHeader from './common/components/DefaultHeader/DefaultHeader';
 import { NicknameContext } from './context/nickname';
 import UserService from './common/services/userInfoService';
 import BackgroundController from './BackgroundController';
+import { getAccountId } from './common/services/apiService';
 
 class App extends Component {
   constructor(props) {
@@ -24,10 +25,18 @@ class App extends Component {
     BackgroundController.run(); // move to a place when it will run only once.
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const nickname = prompt(
+      'Please introduce your PUBG nickname (this part still is work in progress)',
+    );
+    UserService.setPUBGNickname(nickname);
+    const accountId = await getAccountId(nickname);
+    UserService.setAccountId(accountId);
     overwolf.windows.getCurrentWindow(result => {
       this.setState({
         currentWindowName: result.window.name,
+        userNickname: nickname,
+        accountId,
       });
     });
   }

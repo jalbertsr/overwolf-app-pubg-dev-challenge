@@ -9,8 +9,8 @@
     "icon": "IconMouseOver.png",
     "icon_gray": "IconMouseNormal.png",
     "launcher_icon": "desktop-icon.ico",
-    "description": "Sample app for PUBG dev challenge in React",
-    "dock_button_title": "PUBG Post-analysis"
+    "description": "PUBG postmortem analysis, see how killed you, see your friends stats and compare yourself with others in the community!",
+    "dock_button_title": "PUBG PostMortem"
   },
   "permissions": [
     "Hotkeys"
@@ -125,7 +125,8 @@
         "https://www.googleapis.com",
         "https://api.pubg.com/*",
         "https://2z9znr6j0a.execute-api.eu-west-1.amazonaws.com/*",
-        "https://8uodths1pe.execute-api.eu-west-1.amazonaws.com/*"
+        "https://8uodths1pe.execute-api.eu-west-1.amazonaws.com/*",
+        "https://8mqcdo2gvh.execute-api.eu-west-1.amazonaws.com/*"
       ]
     }
   }
