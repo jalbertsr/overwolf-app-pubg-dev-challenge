@@ -14,7 +14,7 @@ const localStorageService = {
 export default {
   setAccountId: accountId =>
     localStorageService.setItem('accountId', accountId),
-  setPUBGNickname: async nickname =>
+  setPUBGNickname: nickname =>
     localStorageService.setItem('nickname', nickname),
   getPUBGNickname: () => localStorageService.getItem('nickname'),
   getAccountId: () => localStorageService.getItem('accountId'),
