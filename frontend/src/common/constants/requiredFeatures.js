@@ -1,4 +1,4 @@
-const EVENTS = ['death', 'killer', 'revived', 'kill', 'knockedout', 'match'];
+const EVENTS = ['death', 'killer', 'revived', 'kill', 'me', 'match'];
 const UPDATES = [
   'kills',
   'location',

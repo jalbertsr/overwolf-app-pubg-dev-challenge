@@ -85,6 +85,11 @@ export function dataFormatterService(type, feature, data) {
             data: { nickname: UserService.getPUBGNickname() },
             createPlayer: true,
           };
+        } else if (phaseName === 'landed') {
+          return {
+            ...defaultPayload,
+            data: { landedAt: Math.round(new Date() / 1000) },
+          };
         }
         break;
       case REQUIRED_FEATURES_DICT.TEAM:
