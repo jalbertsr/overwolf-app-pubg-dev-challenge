@@ -33,7 +33,7 @@ export function dataFormatterService(type, feature, data) {
                 x,
                 y,
                 z,
-                timeStamp: Math.round(new Date() / 1000),
+                timeStamp: getCurrentTime(),
               },
             },
           };
@@ -88,7 +88,21 @@ export function dataFormatterService(type, feature, data) {
         } else if (phaseName === 'landed') {
           return {
             ...defaultPayload,
-            data: { landedAt: Math.round(new Date() / 1000) },
+            data: { landedAt: getCurrentTime() },
+          };
+        } else if (phaseName === 'freefly') {
+          return {
+            ...defaultPayload,
+            data: {
+              startFreeflyAt: getCurrentTime(),
+            },
+          };
+        } else if (phaseName === 'aircraft') {
+          return {
+            ...defaultPayload,
+            data: {
+              startAt: getCurrentTime(),
+            },
           };
         }
         break;

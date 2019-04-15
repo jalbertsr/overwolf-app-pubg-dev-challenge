@@ -22,3 +22,5 @@ export const calculateZSpeed = locations => {
   }
   return speeds.reduce((acc, speed) => (acc += speed), 0) / locations.length;
 };
+
+export const getCurrentTime = () => Math.round(new Date() / 1000);
