@@ -1,8 +1,8 @@
 import { REQUIRED_FEATURES_DICT } from '../constants/requiredFeatures';
 import MAP_NAMES from '../constants/mapNames';
 import UserService from './userInfoService';
-import WindowsService from './windows-service';
-import WindowNames from '../constants/windowNames';
+// import WindowsService from './windows-service';
+// import WindowNames from '../constants/windowNames';
 
 export const defaultPayload = {
   accountId: UserService.getAccountId(),
@@ -120,8 +120,8 @@ export function dataFormatterService(type, feature, data) {
           data: { ...payload },
         };
       case REQUIRED_FEATURES_DICT.ME:
-        const { name } = data.me;
-        console.log('Nickname', name);
+        // const { name } = data.me;
+        console.log('me', data);
         break;
       default:
         console.log(
@@ -133,7 +133,7 @@ export function dataFormatterService(type, feature, data) {
     switch (feature) {
       case REQUIRED_FEATURES_DICT.DEATH:
         console.log('Event DEATH happened', data);
-        WindowsService.restore(WindowNames.IN_GAME);
+        // WindowsService.restore(WindowNames.IN_GAME);
         break;
       case REQUIRED_FEATURES_DICT.KILLER:
         let killerName = '';
@@ -164,13 +164,13 @@ export function dataFormatterService(type, feature, data) {
         console.log('Match Started!', data, feature);
         return {
           ...defaultPayload,
-          data: { matchStart: Date.now().toString() },
+          data: { matchStart: Math.round(new Date() / 1000) },
         };
       case REQUIRED_FEATURES_DICT.MATCH_END:
         console.log('Match Ended!', data, feature);
         return {
           ...defaultPayload,
-          data: { matchEnd: Date.now().toString() },
+          data: { matchEnd: Math.round(new Date() / 1000) },
         };
       case REQUIRED_FEATURES_DICT.MATCH_SUMMARY:
         console.log('You are in the match Summary!', data, feature);
