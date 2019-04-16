@@ -3,6 +3,7 @@ import MAP_NAMES from '../constants/mapNames';
 import UserService from './userInfoService';
 // import WindowsService from './windows-service';
 // import WindowNames from '../constants/windowNames';
+import { getCurrentTime } from '../helpers';
 
 export const defaultPayload = {
   accountId: UserService.getAccountId(),
@@ -135,7 +136,7 @@ export function dataFormatterService(type, feature, data) {
         };
       case REQUIRED_FEATURES_DICT.ME:
         // const { name } = data.me;
-        console.log('me', data);
+        console.log('me event', data);
         break;
       default:
         console.log(
@@ -178,13 +179,13 @@ export function dataFormatterService(type, feature, data) {
         console.log('Match Started!', data, feature);
         return {
           ...defaultPayload,
-          data: { matchStart: Math.round(new Date() / 1000) },
+          data: { matchStart: getCurrentTime() },
         };
       case REQUIRED_FEATURES_DICT.MATCH_END:
         console.log('Match Ended!', data, feature);
         return {
           ...defaultPayload,
-          data: { matchEnd: Math.round(new Date() / 1000) },
+          data: { matchEnd: getCurrentTime() },
         };
       case REQUIRED_FEATURES_DICT.MATCH_SUMMARY:
         console.log('You are in the match Summary!', data, feature);
