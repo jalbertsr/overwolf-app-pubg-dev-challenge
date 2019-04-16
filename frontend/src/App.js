@@ -26,20 +26,37 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const nickname = prompt(
-      'Please introduce your PUBG nickname (this part still is work in progress)',
-    );
-    UserService.setPUBGNickname(nickname);
-    const accountId = await getAccountId(nickname);
-    UserService.setAccountId(accountId);
+    const [
+      nickname,
+      accountId,
+      isFirstTime,
+    ] = await this.firstTimeCheckTutorial();
     overwolf.windows.getCurrentWindow(result => {
+      const accountInfo = isFirstTime
+        ? {
+            userNickname: nickname,
+            accountId,
+          }
+        : {};
       this.setState({
         currentWindowName: result.window.name,
-        userNickname: nickname,
-        accountId,
+        ...accountInfo,
       });
     });
   }
+
+  firstTimeCheckTutorial = async () => {
+    if (!this.state.accountId || !this.state.userNickname) {
+      const nickname = prompt(
+        'Please introduce your PUBG nickname (this part still is work in progress)',
+      );
+      UserService.setPUBGNickname(nickname);
+      const accountId = await getAccountId(nickname);
+      UserService.setAccountId(accountId);
+      return [nickname, accountId, true];
+    }
+    return [null, null, false];
+  };
 
   render() {
     const {
@@ -48,7 +65,8 @@ class App extends Component {
       accountId,
     } = this.state;
 
-    let window, isSettings;
+    let window = null,
+      isSettings = null;
     const body = document.getElementsByTagName('body')[0];
     switch (windowName) {
       case WindowNames.MAIN:
